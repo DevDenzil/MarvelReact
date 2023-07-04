@@ -6,7 +6,7 @@ import './style/style.scss';
 
 const root = createRoot(document.getElementById('root')); // createRoot(container!) if you use TypeScript
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>
+  // </React.StrictMode>
 );
