@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -35,21 +35,11 @@ const ComicsList = (props) => {
     setComicsEnded(ended);
   };
 
-  const itemRefs = useRef([]);
-
-  const focusOnItem = (id) => {
-    itemRefs.current.forEach((item) =>
-      item.classList.remove('comics__item_selected')
-    );
-    itemRefs.current[id].classList.add('comics__item_selected');
-    itemRefs.current[id].focus();
-  };
-
   function renderItems(arr) {
     const items = arr.map((item, i) => {
       return (
         <li className="comics__item" key={i}>
-          <a href="#">
+          <Link to={`/comics/${item.id}`}>
             <img
               src={item.thumbnail}
               alt={item.title}
@@ -57,7 +47,7 @@ const ComicsList = (props) => {
             />
             <div className="comics__item-name">{item.title}</div>
             <div className="comics__item-price">{item.price}</div>
-          </a>
+          </Link>
         </li>
       );
     });
